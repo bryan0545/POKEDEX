@@ -26,7 +26,7 @@ export const getPokemons = (id) => {
         const url = id === "0" ? "https://pokeapi.co/api/v2/pokemon?limit=807&offset=0z":`https://pokeapi.co/api/v2/generation/${id}`
         
         try {
-            const pokemons = await fetchPokeApi(url);
+            let pokemons = await fetchPokeApi(url);
             pokemons = id === "0" ? pokemons.data.results:pokemons.data.pokemon_species;
             dispatch(fetchPokemonSuccess(pokemons))
         } catch (error) {
