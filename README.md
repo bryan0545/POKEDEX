@@ -13,6 +13,7 @@ PokeAPI website: https://pokeapi.co/
 
 #### Running
 Enter to POKEDEX folder and run the next commands on bash.
+
 Install all dependencies.
 ```bash 
 npm i 
