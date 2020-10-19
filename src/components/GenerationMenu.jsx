@@ -23,7 +23,7 @@ border: solid 1px #ef5350;
 width:50%; 
 margin:auto;
 padding: 10px 10px;
-border-radius: 30px;
+border-radius: 10px;
 min-width:290px;
 color:#ef5350;
 font-size: 16px;
@@ -33,7 +33,7 @@ font-weight: bold;
 @media (max-width: 990px){       
     justify-content:space-between; 
     flex-flow: column nowrap; 
-    border-radius: 30px;  
+    
 }
 @media (max-width: 1350px){
     width:60%; 

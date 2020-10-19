@@ -14,16 +14,16 @@ function renderGrid(pokemonList, handleShowInfo) {
     return (
         <DivGrid >
             {pokemonList.map(pokemon => {
-                const id = getPokemonID(pokemon.url);                
+                const id = getPokemonID(pokemon.url);
                 return (
                     <div className="card" key={id} >
-                        <p >{`${id}. ${firstUpperCase(pokemon.name)}`}</p>                        
+                        <p >{`${id}. ${firstUpperCase(pokemon.name)}`}</p>
                         <img
-                            draggable="false"                           
+                            draggable="false"
                             src={onLoading ? "spinner.gif" : getFrontSprite(pokemon.url)} alt=""
                         />
                         <DivButtons>
-                            <button className="info" onClick = {()=>handleShowInfo(id)}>INFO</button>
+                            <button className="info" onClick={() => handleShowInfo(id)}>INFO</button>
                             <button className="catch">CATCH</button>
                         </DivButtons>
                     </div>
@@ -33,7 +33,7 @@ function renderGrid(pokemonList, handleShowInfo) {
     )
 }
 
-function renderList(pokemonList,  handleShowInfo) {
+function renderList(pokemonList, handleShowInfo) {
     return (
         <DivTable>
             <table>
@@ -57,13 +57,13 @@ function renderList(pokemonList,  handleShowInfo) {
                                 <td>
                                     <img
                                         draggable="false"
-                                        src={ imageUrl } alt=""
+                                        src={imageUrl} alt=""
                                     />
                                 </td>
                                 <td>{name}</td>
                                 <td>
                                     <DivButtons>
-                                        <button className="info" onClick = {()=>handleShowInfo(id)}>INFO</button>
+                                        <button className="info" onClick={() => handleShowInfo(id)}>INFO</button>
                                         <button className="catch">CATCH</button>
                                     </DivButtons>
                                 </td>
@@ -84,25 +84,25 @@ const PokemonList = () => {
     const [showInfo, setshowInfo] = useState(false)
     const [PokemonID, setPokemonID] = useState(0)
 
-    const handleClick = (type) =>{
+    const handleClick = (type) => {
         setOnTypeView(type)
     }
 
-    const showModal = () =>{
+    const showModal = () => {
         setshowInfo(!showInfo)
     }
 
-    const handleShowInfo = (id) =>{  
-        setPokemonID(id) 
+    const handleShowInfo = (id) => {
+        setPokemonID(id)
         showModal();
     }
 
     return (
-        <div>          
-            <GroupButtons onClick = {handleClick}>grid</GroupButtons>            
-            {typeView === "grid" && renderGrid(pokemonList, handleShowInfo) }
+        <div>
+            <GroupButtons onClick={handleClick}>grid</GroupButtons>
+            {typeView === "grid" && renderGrid(pokemonList, handleShowInfo)}
             {typeView === "list" && renderList(pokemonList, handleShowInfo)}
-            {showInfo && <><PokemonModal PokemonID = {PokemonID}/><BlackModal onClick = {showModal}/>)</>}
+            {showInfo && <><PokemonModal PokemonID={PokemonID} /><BlackModal onClick={showModal} />)</>}
         </div>)
 }
 
@@ -148,19 +148,21 @@ const DivGrid = styled.div`
         border-radius: 15px;
     }
 
-    @media (max-width: 480px){    
-         
-        grid-template-columns: repeat( auto-fit , minmax(120px , 1fr));
-        
+    @media (max-width: 990px){               
+            ::-webkit-scrollbar{
+            width:5px;
+        }    
+    }
+
+    @media (max-width: 480px){   
+        grid-template-columns: repeat( auto-fit , minmax(120px , 1fr));        
         ::-webkit-scrollbar{
-            margin:0;
-            width:5px; 
+            margin:0;            
             background-color: white;      
             border-radius: 15px;
             background-color: #f3f3f3;      
         }              
-    }
-  
+    }  
 `
 const DivButtons = styled.div`
 padding: 0 0 2px 0;
@@ -204,22 +206,18 @@ const DivTable = styled.div`
         border-radius: 15px;
         background-color: #f3f3f3;      
     }
-
     ::-webkit-scrollbar-thumb{
         background-color: #ef5350;
         border-radius: 15px;
     }
-
     @media (max-width: 1300px){
         width:90%; 
     }
-
     @media (max-width: 990px){
         width:100%;         
         ::-webkit-scrollbar{
         width:5px;    
     }
-
     @media (max-width: 480px){    
         height: 60vh;       
     }
@@ -227,16 +225,21 @@ const DivTable = styled.div`
 
 table{  
     width:100%;  
-    /* padding:0;  
-   
+    padding:0;  
     text-align:center;  
     height: 70vh;
-    border-collapse: collapse;
-     
+    border-collapse: collapse;   
 
+    th {
+        background: white;
+        position: sticky;  
+        top: 0;
+        color: #ef5350;
+        border-bottom: #ef5350;
+    }
     tbody{
-        height:100%; 
-        }         */
+            height:100%; 
+        }        
      
     img{
         padding:0;
