@@ -13,6 +13,7 @@ justify-content: space-between;
 align-items:center;
 background-color:#ef5350;
 
+
 .logo{
     padding-top: 8px;
     color:white;
@@ -22,7 +23,7 @@ background-color:#ef5350;
         height: 45px;
     }
 }
-@media (max-width: 768px){     
+@media (max-width: 990px){     
     justify-content: center;
 } 
 

@@ -15,7 +15,7 @@ const Menu = styled.ul`
             text-decoration: none;
             color:white;
         }
-        @media (max-width: 768px){        
+        @media (max-width: 990px){        
             flex-flow: column nowrap; 
             align-items:center;
             background-color: red;

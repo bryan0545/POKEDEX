@@ -4,6 +4,7 @@ import { getGenerations } from './../actions/generationActions'
 import { getPokemons } from '../actions/pokemonActions';
 import GenerationMenu from './GenerationMenu';
 import PokemonList from './PokemonList';
+import styled from 'styled-components';
 
 class Pokemons extends Component {
     state = {
@@ -17,12 +18,11 @@ class Pokemons extends Component {
 
     render() {
         return (
-            <div style = {{padding:"4rem 0"}}>
+            <MainSection>
                 <GenerationMenu/>
                 <PokemonList />
-            </div>
+            </MainSection>
         )
-
     }
 }
 
@@ -40,3 +40,13 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemons);
 
+const MainSection = styled.div`
+    padding: 4rem 5rem 5rem 5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+
+    @media (max-width: 480px){
+        padding: 4rem 2rem 1rem 2rem;
+}
+`

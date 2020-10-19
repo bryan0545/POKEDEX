@@ -7,8 +7,7 @@ import { useState } from 'react';
 const GroupButtons = ({onClick}) => {
     const [active, setActive] = useState(false)
 
-    return (
-        
+    return (        
         <StyledGroup >
             <ListButton onClick={onClick} />
             <GridButton className= "right" onClick={onClick} />            
@@ -20,7 +19,16 @@ export default GroupButtons;
 
 const StyledGroup = styled.div`
     display:flex;  
-    border-collapse:collapse;
+    margin: 10px 20% 10px auto;   
+    justify-content:flex-end;
+    z-index: 100;
 
-  
+    @media (max-width: 1300px){
+        width:90%; 
+        right:-40px;       
+    }   
+
+    
+
+ 
 `

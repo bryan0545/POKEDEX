@@ -14,12 +14,10 @@ function renderGrid(pokemonList, handleShowInfo) {
     return (
         <DivGrid >
             {pokemonList.map(pokemon => {
-                const id = getPokemonID(pokemon.url);
-                
+                const id = getPokemonID(pokemon.url);                
                 return (
                     <div className="card" key={id} >
-                        <p >{`${id}. ${firstUpperCase(pokemon.name)}`}</p>
-                        
+                        <p >{`${id}. ${firstUpperCase(pokemon.name)}`}</p>                        
                         <img
                             draggable="false"                           
                             src={onLoading ? "spinner.gif" : getFrontSprite(pokemon.url)} alt=""
@@ -28,7 +26,6 @@ function renderGrid(pokemonList, handleShowInfo) {
                             <button className="info" onClick = {()=>handleShowInfo(id)}>INFO</button>
                             <button className="catch">CATCH</button>
                         </DivButtons>
-
                     </div>
                 )
             })}
@@ -106,7 +103,6 @@ const PokemonList = () => {
             {typeView === "grid" && renderGrid(pokemonList, handleShowInfo) }
             {typeView === "list" && renderList(pokemonList, handleShowInfo)}
             {showInfo && <><PokemonModal PokemonID = {PokemonID}/><BlackModal onClick = {showModal}/>)</>}
-            
         </div>)
 }
 
@@ -119,7 +115,9 @@ const DivGrid = styled.div`
     grid-gap: 5px;    
     padding:20px;  
     align-items:center ;
-    text-align:center;  
+    text-align:center; 
+    height: 70vh;  
+    overflow-x:hidden;          
     
     .card{
         user-select: none;        
@@ -137,6 +135,30 @@ const DivGrid = styled.div`
             height:96px;
             width:96px;
         }   
+    }
+    ::-webkit-scrollbar{
+        width:10px;         
+        background-color: white;      
+        border-radius: 15px;
+        background-color: #f3f3f3;      
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #ef5350;
+        border-radius: 15px;
+    }
+
+    @media (max-width: 480px){    
+         
+        grid-template-columns: repeat( auto-fit , minmax(120px , 1fr));
+        
+        ::-webkit-scrollbar{
+            margin:0;
+            width:5px; 
+            background-color: white;      
+            border-radius: 15px;
+            background-color: #f3f3f3;      
+        }              
     }
   
 `
@@ -160,39 +182,53 @@ padding: 0 0 2px 0;
     .catch{
         background-color: #ef5350;
         color:white;    
+    }  
+    @media (max-width: 480px){        
+        button{            
+            width:48px;
+            font-size: 11px              
+        }
     }
 `
 const DivTable = styled.div`
-width:60%;
-height: 70vh;
-margin:auto;
-margin-top: 20px;
-overflow-x:hidden;
-overflow-y:auto;
+    width:70%;
+    height: 70vh;
+    margin:auto;
+    margin-top: 10px;
+    overflow-x:hidden;
+    overflow-y:auto;
 
+    ::-webkit-scrollbar{
+        width:10px; 
+        background-color: white;      
+        border-radius: 15px;
+        background-color: #f3f3f3;      
+    }
 
-::-webkit-scrollbar{
-    width:10px; 
-    background-color: white;      
-    border-radius: 15px;
-    background-color: #f3f3f3;      
+    ::-webkit-scrollbar-thumb{
+        background-color: #ef5350;
+        border-radius: 15px;
+    }
+
+    @media (max-width: 1300px){
+        width:90%; 
+    }
+
+    @media (max-width: 990px){
+        width:100%;         
+        ::-webkit-scrollbar{
+        width:5px;    
+    }
+
+    @media (max-width: 480px){    
+        height: 60vh;       
+    }
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: #ef5350;
-    border-radius: 15px;
-}
-
-@media (max-width: 1024px){
-    width:70%; 
-}
-
-@media (max-width: 768px){
-    width:80%; 
-}
-table{    
-    padding:0;  
-    width:100%;
+table{  
+    width:100%;  
+    /* padding:0;  
+   
     text-align:center;  
     height: 70vh;
     border-collapse: collapse;
@@ -200,7 +236,7 @@ table{
 
     tbody{
         height:100%; 
-        }        
+        }         */
      
     img{
         padding:0;

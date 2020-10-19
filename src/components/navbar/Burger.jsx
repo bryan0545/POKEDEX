@@ -53,7 +53,7 @@ const StyledBurger = styled.div`
      }
  }
 
- @media (max-width: 768px){ 
+ @media (max-width: 990px){ 
      display:flex; 
      flex-flow: column nowrap;
      justify-content: space-around;
